@@ -62,4 +62,9 @@ public class PeliculaService implements IPeliculaService {
 		return null;
 	}
 
+	@Override
+	public void guardar(Pelicula pelicula) {
+		this.lista.add(pelicula);
+	}
+
 }
