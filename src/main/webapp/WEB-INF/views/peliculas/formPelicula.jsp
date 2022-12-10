@@ -22,12 +22,7 @@
 	<h3 class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
       </div>
 
-      <form action="${ urlRoot }peliculas/save" method="post">
-      	<c:choose>
-      		<c:when test="${ msg != null }">
-      			<div class='alert alert-success' role="alert">${ msg }</div>		
-      		</c:when>
-      	</c:choose>
+      <form action="${ urlRoot }peliculas/save" method="post" enctype="multipart/form-data">
       	<spring:hasBindErrors name="pelicula">
 			<div class='alert alert-danger' role='alert'>
 				Por favor corrija los siguientes errores:
