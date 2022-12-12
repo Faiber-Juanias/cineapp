@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import net.fjuanias.app.iservice.IBannerService;
 import net.fjuanias.app.iservice.IPeliculaService;
+import net.fjuanias.app.model.Banner;
 import net.fjuanias.app.model.Pelicula;
 import net.fjuanias.app.util.Utileria;
 
@@ -26,18 +28,17 @@ public class HomeController {
 	
 	@Autowired
 	private IPeliculaService servicePelicula;
-
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String goHome() {
-		return "home";
-	}
+	@Autowired
+	private IBannerService serviceBanner;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
 		List<String> listaFechas = Utileria.getNextDays(3);
 		List<Pelicula> peliculas = servicePelicula.buscarTodas();
+		List<Banner> banners = serviceBanner.buscarTodas();
 		
 		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("banners", banners);
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("fechas", listaFechas);
 		
