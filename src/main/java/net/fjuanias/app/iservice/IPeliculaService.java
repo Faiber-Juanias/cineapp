@@ -9,5 +9,6 @@ public interface IPeliculaService {
 	List<Pelicula> buscarTodas();
 	Pelicula buscarPorId(int idPelicula);
 	void guardar(Pelicula pelicula);
+	List<String> buscarGeneros();
 	
 }

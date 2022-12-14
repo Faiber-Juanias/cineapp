@@ -34,10 +34,18 @@
 				</ul>
 			</div>
 		</spring:hasBindErrors>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<img class="img-rounded" src="${ urlPublic }/images/${ pelicula.imagen }" title="Imagen actual de la pelicula" width="150" height="200">
+	            </div>
+			</div>
+		</div>
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group">
               <label for="titulo">Título</label>
+              <form:hidden path="id"/>
               <form:input type="text" class="form-control" path="titulo" id="titulo" required="required" />
             </div>  
           </div>
@@ -60,17 +68,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="genero" class="control-label">Genero</label>              
-              <form:select id="genero" path="genero" class="form-control">
-                <form:option value="Accion">Accion</form:option>
-                <form:option value="Aventura">Aventura </form:option>
-                <form:option value="Clasicas">Clasicas</form:option>                  
-                <form:option value="Comedia Romantica">Comedia Romantica</form:option>                  
-                <form:option value="Drama">Drama</form:option>                  
-                <form:option value="Terror">Terror</form:option>                  
-                <form:option value="Infantil">Infantil</form:option>                  
-                <form:option value="Accion y Aventura">Accion y Aventura</form:option>                  
-                <form:option value="Romantica">Romantica</form:option>                  
-              </form:select>             
+              <form:select id="genero" path="genero" class="form-control" items="${ generos }" />           
             </div> 
           </div>         
         </div>
@@ -95,6 +93,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="imagen">Imagen</label>
+              <form:hidden path="imagen"/>
               <input type="file" id="archivoImagen" name="archivoImagen" />
               <p class="help-block">Imagen de la pelicula</p>
             </div> 
