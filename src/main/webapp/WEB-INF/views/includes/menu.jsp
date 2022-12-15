@@ -16,7 +16,9 @@
       <ul class="nav navbar-nav">            
         <li><a href="${ urlRoot }peliculas/index">Peliculas</a></li>
         <li><a href="${ urlRoot }banners/index">Banners</a></li>
+        <li><a href="${ urlRoot }horarios/index">Horarios</a></li>
         <li><a href="#">Acerca</a></li>
+        <li><a href="${ urlRoot }contacto">Contacto</a></li>
         <li><a href="#">Login</a></li>
       </ul>
     </div><!--/.nav-collapse -->
