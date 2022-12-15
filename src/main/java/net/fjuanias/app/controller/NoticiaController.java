@@ -11,7 +11,7 @@ import net.fjuanias.app.model.Noticia;
 
 @Controller
 @RequestMapping("/noticias")
-public class NoticiasController {
+public class NoticiaController {
 	
 	@Autowired
 	private INoticiaService serviceNoticia;
