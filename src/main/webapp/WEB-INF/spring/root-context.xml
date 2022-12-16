@@ -14,5 +14,27 @@
 			http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 			
 	<context:component-scan base-package="net.fjuanias.app.service" />
+	
+	<jpa:repositories base-package="net.fjuanias.app.repository" />
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/cineapp?useSSL=false" />
+		<property name="username" value="root" />
+		<property name="password" value="rtsm981526" />
+	</bean>
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="generateDdl" value="false" />
+		<property name="showSql" value="true"></property>
+		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
+	</bean>
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" value="net.fjuanias.app.model" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
 
 </beans>
