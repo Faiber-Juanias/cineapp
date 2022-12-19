@@ -53,4 +53,9 @@ public class PeliculaService implements IPeliculaService {
 		return generos;
 	}
 
+	@Override
+	public void eliminar(int idPelicula) {
+		this.repoPelicula.deleteById(idPelicula);
+	}
+
 }

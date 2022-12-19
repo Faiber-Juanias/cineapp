@@ -76,6 +76,13 @@ public class PeliculaController {
 		return "peliculas/formPelicula";
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String eliminar(@PathVariable("id") String id, Model model, RedirectAttributes attributes) {
+		this.servicePelicula.eliminar(Integer.parseInt(id));
+		attributes.addFlashAttribute("msg", "Registro Eliminado");
+		return "redirect:/peliculas/index";
+	}
+	
 	@ModelAttribute 
 	public void setGenericos(Model model) {
 		model.addAttribute("generos", this.servicePelicula.buscarGeneros());
