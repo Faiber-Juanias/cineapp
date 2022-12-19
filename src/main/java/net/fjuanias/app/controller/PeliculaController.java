@@ -15,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,7 +39,6 @@ public class PeliculaController {
 
 	@GetMapping("/create")
 	public String crear(@ModelAttribute Pelicula pelicula, Model model) {
-		model.addAttribute("generos", this.servicePelicula.buscarGeneros());
 		return "peliculas/formPelicula";
 	}
 	
@@ -55,8 +55,11 @@ public class PeliculaController {
 		}
 		System.out.println(pelicula);
 		this.serviceDetalle.guardar(pelicula.getDetalle());
-		servicePelicula.guardar(pelicula);
-		attributes.addFlashAttribute("msg", "Registro Guardado");
+		this.servicePelicula.guardar(pelicula);
+		if (pelicula.getId() != 0)
+			attributes.addFlashAttribute("msg", "Registro Actualizado");
+		else
+			attributes.addFlashAttribute("msg", "Registro Guardado");
 		return "redirect:/peliculas/index";
 	}
 	
@@ -65,6 +68,17 @@ public class PeliculaController {
 		List<Pelicula> lista = servicePelicula.buscarTodas();
 		model.addAttribute("peliculas", lista);
 		return "peliculas/listPeliculas";
+	}
+	
+	@GetMapping("/update/{id}")
+	public String editar(@PathVariable("id") String id, Model model) {
+		model.addAttribute("pelicula", this.servicePelicula.buscarPorId(Integer.parseInt(id)));
+		return "peliculas/formPelicula";
+	}
+	
+	@ModelAttribute 
+	public void setGenericos(Model model) {
+		model.addAttribute("generos", this.servicePelicula.buscarGeneros());
 	}
 	
 	@InitBinder

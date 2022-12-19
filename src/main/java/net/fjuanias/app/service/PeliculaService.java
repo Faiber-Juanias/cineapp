@@ -49,6 +49,7 @@ public class PeliculaService implements IPeliculaService {
 		generos.add("Accion y Aventura");
 		generos.add("Romantica");
 		generos.add("Ciencia Ficcion");
+		generos.add("Thriller");
 		return generos;
 	}
 
