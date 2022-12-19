@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import net.fjuanias.app.iservice.IDetalleService;
 import net.fjuanias.app.iservice.IPeliculaService;
 import net.fjuanias.app.model.Pelicula;
 import net.fjuanias.app.util.Utileria;
@@ -31,6 +32,9 @@ public class PeliculaController {
 	
 	@Autowired
 	private IPeliculaService servicePelicula;
+	
+	@Autowired
+	private IDetalleService serviceDetalle;
 
 	@GetMapping("/create")
 	public String crear(@ModelAttribute Pelicula pelicula, Model model) {
@@ -49,6 +53,8 @@ public class PeliculaController {
 				pelicula.setImagen(nombreImagen);
 			}
 		}
+		System.out.println(pelicula);
+		this.serviceDetalle.guardar(pelicula.getDetalle());
 		servicePelicula.guardar(pelicula);
 		attributes.addFlashAttribute("msg", "Registro Guardado");
 		return "redirect:/peliculas/index";
