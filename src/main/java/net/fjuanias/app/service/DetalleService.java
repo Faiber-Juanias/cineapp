@@ -18,4 +18,9 @@ public class DetalleService implements IDetalleService {
 		this.repoDetalle.save(detalle);
 	}
 
+	@Override
+	public void eliminar(int idDetalle) {
+		this.repoDetalle.deleteById(idDetalle);
+	}
+
 }

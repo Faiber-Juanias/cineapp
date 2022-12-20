@@ -3,6 +3,7 @@ package net.fjuanias.app.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,10 +29,9 @@ public class Pelicula {
 	private Date fechaEstreno;
 	private String estatus = "Activa";
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idDetalle")
 	private Detalle detalle;
-	
 	
 	@OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
 	private List<Horario> horarios;

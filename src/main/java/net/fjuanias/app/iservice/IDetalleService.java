@@ -5,5 +5,6 @@ import net.fjuanias.app.model.Detalle;
 public interface IDetalleService {
 
 	void guardar(Detalle detalle);
+	void eliminar(int idDetalle);
 	
 }
