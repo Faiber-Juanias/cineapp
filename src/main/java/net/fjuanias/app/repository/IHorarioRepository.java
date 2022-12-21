@@ -15,7 +15,8 @@ import net.fjuanias.app.model.Pelicula;
 public interface IHorarioRepository extends JpaRepository<Horario, Integer> {
 	
 	List<Horario> findByPelicula_IdAndFechaOrderByHora(int idPelicula, Date fecha);
-	@Query("select distinct h.pelicula from Horario h where h.fecha = :fecha")
+	
+	@Query("select distinct h.pelicula from Horario h where h.fecha = :fecha and h.pelicula.estatus = 'Activa'")
 	List<Pelicula> findPeliculasByHorario_Fecha(@Param("fecha") Date fecha);
 	
 }

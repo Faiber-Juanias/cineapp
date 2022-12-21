@@ -1,5 +1,6 @@
 package net.fjuanias.app.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,7 +35,11 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
-		model.addAttribute("peliculas", servicePelicula.buscarTodas());
+		try {
+			model.addAttribute("peliculas", this.serviceHorario.buscarPeliculasByHorario_Fecha(this.dateFormat.parse(Utileria.getNextDays(1).get(0))));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		return "home";
 	}

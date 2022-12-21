@@ -89,6 +89,11 @@
       <div class="container marketing">
 
         <div class="row">
+        	<c:if test="${ peliculas.size() == 0 }">
+        		<div class="col-12 text-center">
+	        		<p><h4><small>No se encontraron resultados.</small></h4></p>
+        		</div>
+        	</c:if>
 			<c:forEach items="${ peliculas }" var="pelicula">
 				<div class="col-xs-12 col-sm-6 col-md-3">
 					<img class="img-rounded" src="${ urlPublic }/images/${ pelicula.imagen }" alt="Generic placeholder image" width="150" height="200">
