@@ -62,10 +62,5 @@ public class Horario {
 	public void setPelicula(Pelicula pelicula) {
 		this.pelicula = pelicula;
 	}
-	@Override
-	public String toString() {
-		return "Horario [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", sala=" + sala + ", precio=" + precio
-				+ ", pelicula=" + pelicula + "]";
-	}
 	
 }

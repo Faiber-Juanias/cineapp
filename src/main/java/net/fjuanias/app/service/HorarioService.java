@@ -2,8 +2,11 @@ package net.fjuanias.app.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import net.fjuanias.app.iservice.IHorarioService;
@@ -35,6 +38,25 @@ public class HorarioService implements IHorarioService {
 	@Override
 	public List<Pelicula> buscarPeliculasByHorario_Fecha(Date fecha) {
 		return this.repoHorario.findPeliculasByHorario_Fecha(fecha);
+	}
+
+	@Override
+	public Horario buscarPorId(int idHorario) {
+		Optional<Horario> h = this.repoHorario.findById(idHorario);
+		if (h.isPresent()) {
+			return h.get();
+		}
+		return null;
+	}
+
+	@Override
+	public void eliminarPorId(int idHorario) {
+		this.repoHorario.deleteById(idHorario);
+	}
+
+	@Override
+	public Page<Horario> buscarTodosPaginados(Pageable page) {
+		return this.repoHorario.findAll(page);
 	}
 
 }
