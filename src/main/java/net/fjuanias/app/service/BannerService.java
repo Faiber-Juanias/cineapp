@@ -1,6 +1,7 @@
 package net.fjuanias.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,20 @@ public class BannerService implements IBannerService {
 	@Override
 	public List<Banner> buscarTodas() {
 		return this.repoBanner.findAll();
+	}
+
+	@Override
+	public Banner buscarPorId(int idBanner) {
+		Optional<Banner> banner = this.repoBanner.findById(idBanner);
+		if (banner.isPresent()) {
+			return banner.get();
+		}
+		return null;
+	}
+
+	@Override
+	public void eliminarPorId(int idBanner) {
+		this.repoBanner.deleteById(idBanner);
 	}
 
 }

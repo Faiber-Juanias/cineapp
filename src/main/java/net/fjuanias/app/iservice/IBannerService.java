@@ -8,5 +8,7 @@ public interface IBannerService {
 
 	void guardar(Banner banner);
 	List<Banner> buscarTodas();
+	Banner buscarPorId(int idBanner);
+	void eliminarPorId(int idBanner);
 	
 }

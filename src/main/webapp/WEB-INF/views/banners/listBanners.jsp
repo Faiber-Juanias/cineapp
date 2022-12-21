@@ -42,7 +42,7 @@
 	                <td>${ banner.archivo }</td>                         
 	                <td>
 	                	<c:choose>
-			           		<c:when test="${ banner.estatus == 'Activa' }">
+			           		<c:when test="${ banner.estatus == 'Activo' }">
 			           			<span class="label label-success">${ banner.estatus }</span>
 			           		</c:when>
 			           		<c:otherwise>
@@ -51,8 +51,8 @@
 			           	</c:choose>
 	                </td>
 	                <td>
-	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+	                    <a href="${ urlRoot }banners/update/${ banner.id }" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+	                    <a href="${ urlRoot }banners/delete/${ banner.id }" class="btn btn-danger btn-sm" role="button" title="Eliminar" onclick="return confirm('¿Eliminar Banner?')"><span class="glyphicon glyphicon-trash"></span></a>
 	                </td>
 	            </tr>
             </c:forEach>         
