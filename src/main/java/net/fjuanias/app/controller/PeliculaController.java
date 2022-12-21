@@ -2,12 +2,13 @@ package net.fjuanias.app.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -59,8 +60,8 @@ public class PeliculaController {
 	}
 	
 	@GetMapping("/index")
-	public String mostrarIndex(Model model) {
-		List<Pelicula> lista = servicePelicula.buscarTodas();
+	public String mostrarIndex(Model model, Pageable page) {
+		Page<Pelicula> lista = servicePelicula.buscarTodas(page);
 		model.addAttribute("peliculas", lista);
 		return "peliculas/listPeliculas";
 	}

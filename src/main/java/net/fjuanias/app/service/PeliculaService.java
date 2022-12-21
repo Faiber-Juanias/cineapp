@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import net.fjuanias.app.iservice.IPeliculaService;
@@ -16,11 +18,6 @@ public class PeliculaService implements IPeliculaService {
 	
 	@Autowired
 	private IPeliculaRepository repoPelicula;
-
-	@Override
-	public List<Pelicula> buscarTodas() {
-		return this.repoPelicula.findAll();
-	}
 
 	@Override
 	public Pelicula buscarPorId(int idPelicula) {
@@ -56,6 +53,16 @@ public class PeliculaService implements IPeliculaService {
 	@Override
 	public void eliminar(int idPelicula) {
 		this.repoPelicula.deleteById(idPelicula);
+	}
+
+	@Override
+	public Page<Pelicula> buscarTodas(Pageable page) {
+		return this.repoPelicula.findAll(page);
+	}
+
+	@Override
+	public List<Pelicula> buscarTodas() {
+		return this.repoPelicula.findAll();
 	}
 
 }

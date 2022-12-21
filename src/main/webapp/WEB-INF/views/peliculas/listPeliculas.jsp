@@ -37,7 +37,7 @@
 		          <th>Estatus</th>
 		          <th>Opciones</th>
 		      </tr>
-		      <c:forEach items="${ peliculas }" var="pelicula">
+		      <c:forEach items="${ peliculas.content }" var="pelicula">
 		      	<tr>
 		           <td>${ pelicula.titulo }</td>
 		           <td>${ pelicula.genero }</td>
@@ -56,11 +56,17 @@
 		           </td>
 		           <td>
 		               <a href="${ urlRoot }peliculas/update/${ pelicula.id }" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-		               <a href="${ urlRoot }peliculas/delete/${ pelicula.id }" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+		               <a href="${ urlRoot }peliculas/delete/${ pelicula.id }" class="btn btn-danger btn-sm" role="button" title="Eliminar" onclick="return confirm('¿Desea eliminar el registro?')"><span class="glyphicon glyphicon-trash"></span></a>
 		           </td>
 		       </tr>
 		  	</c:forEach>
 		  </table>
+		  	<nav aria-label="">
+				<ul class="pager">
+					<li><a href="${ urlRoot }peliculas/index?page=${ peliculas.number -1 }">Anterior</a></li>
+					<li><a href="${ urlRoot }peliculas/index?page=${ peliculas.number + 1 }">Siguiente</a></li>
+				</ul>
+			</nav>
 		</div>
 		    
 		<hr class="featurette-divider">
