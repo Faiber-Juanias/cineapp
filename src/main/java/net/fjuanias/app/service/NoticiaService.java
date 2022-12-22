@@ -47,4 +47,9 @@ public class NoticiaService implements INoticiaService {
 		return this.noticiaRepo.findAll(page);
 	}
 
+	@Override
+	public List<Noticia> buscarNoticiasOrderByFechaDesc() {
+		return this.noticiaRepo.findTop3ByEstatusOrderByFechaDesc("Activa");
+	}
+
 }

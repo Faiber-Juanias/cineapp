@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import net.fjuanias.app.iservice.IBannerService;
 import net.fjuanias.app.iservice.IHorarioService;
+import net.fjuanias.app.iservice.INoticiaService;
 import net.fjuanias.app.iservice.IPeliculaService;
 import net.fjuanias.app.util.Utileria;
 
@@ -32,6 +33,8 @@ public class HomeController {
 	private IBannerService serviceBanner;
 	@Autowired
 	private IHorarioService serviceHorario;
+	@Autowired
+	private INoticiaService serviceNoticia;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
@@ -54,15 +57,16 @@ public class HomeController {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public String buscar(@RequestParam("fecha") Date fecha, Model model) {
-		model.addAttribute("peliculas", serviceHorario.buscarPeliculasByHorario_Fecha(fecha));
+		model.addAttribute("peliculas", this.serviceHorario.buscarPeliculasByHorario_Fecha(fecha));
 		model.addAttribute("fechaBusqueda", dateFormat.format(fecha));
 		return "home";
 	}
 	
 	@ModelAttribute
 	public void setGenericos(Model model) {
-		model.addAttribute("banners", serviceBanner.buscarTodas());
+		model.addAttribute("banners", this.serviceBanner.buscarTodas());
 		model.addAttribute("fechas", Utileria.getNextDays(6));
+		model.addAttribute("noticias", this.serviceNoticia.buscarNoticiasOrderByFechaDesc());
 	}
 	
 	@InitBinder

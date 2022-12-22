@@ -14,5 +14,6 @@ public interface INoticiaService {
 	Page<Noticia> buscarTodasPaginado(Pageable page);
 	Noticia buscarPorId(int idNoticia);
 	void eliminarPorId(int idNoticia);
+	List<Noticia> buscarNoticiasOrderByFechaDesc();
 
 }
