@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,21 +21,22 @@
 
       <h3 class="blog-title"><span class="label label-success">Datos de la Noticia</span></h3>
 
-      <form action="${ urlRoot }noticias/save" method="post">
+      <form:form action="${ urlRoot }noticias/save" method="post" modelAttribute="noticia">
         <div class="row">         
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="titulo">Titulo</label>             
-              <input type="text" class="form-control" name="titulo" id="titulo" required="required"/>
+              <label for="titulo">Titulo</label>   
+              <form:hidden path="id"/>          
+              <form:input type="text" class="form-control" path="titulo" id="titulo" required="required"/>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group">
               <label for="estatus">Estatus</label>             
-              <select id="estatus" name="estatus" class="form-control">
-                <option value="Activa">Activa</option>
-                <option value="Inactiva">Inactiva</option>                
-              </select>  
+              <form:select id="estatus" path="estatus" class="form-control">
+                <form:option value="Activa">Activa</form:option>
+                <form:option value="Inactiva">Inactiva</form:option>                
+              </form:select>  
             </div>
           </div>
         </div>
@@ -42,13 +44,13 @@
           <div class="col-sm-12">
             <div class="form-group">
               <label for="detalle">Detalles</label>             
-              <textarea class="form-control" name="detalle" id="detalle" rows="10"></textarea>
+              <form:textarea class="form-control" path="detalle" id="detalle" rows="10"></form:textarea>
             </div>  
           </div>
         </div>
 
         <button type="submit" class="btn btn-danger" >Guardar</button>
-      </form> 
+      </form:form> 
 
       <hr class="featurette-divider">
 
