@@ -62,6 +62,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/acerca", method = RequestMethod.GET)
+	public String mostrarAcerca() {
+		return "acerca";
+	}
+	
 	@ModelAttribute
 	public void setGenericos(Model model) {
 		model.addAttribute("banners", this.serviceBanner.buscarTodas());

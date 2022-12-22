@@ -18,7 +18,7 @@
         <li><a href="${ urlRoot }banners/index">Banners</a></li>
         <li><a href="${ urlRoot }horarios/index">Horarios</a></li>
         <li><a href="${ urlRoot }noticias/index">Noticias</a></li>
-        <li><a href="#">Acerca</a></li>
+        <li><a href="${ urlRoot }acerca">Acerca</a></li>
         <li><a href="${ urlRoot }contacto">Contacto</a></li>
         <li><a href="#">Login</a></li>
       </ul>
