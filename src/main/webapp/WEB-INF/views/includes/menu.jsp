@@ -20,7 +20,8 @@
         <li><a href="${ urlRoot }noticias/index">Noticias</a></li>
         <li><a href="${ urlRoot }acerca">Acerca</a></li>
         <li><a href="${ urlRoot }contacto">Contacto</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="${ urlRoot }login">Ingresar</a></li>
+        <li><a href="${ urlRoot }logout">Salir</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
