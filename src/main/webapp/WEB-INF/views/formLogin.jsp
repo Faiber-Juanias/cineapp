@@ -41,7 +41,7 @@
 			    	<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
 			    </div>
 		  	</div>
-			<input type="hidden"name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }"/>
 		</form>
 	</div> <!-- /container -->
 	<!-- Bootstrap core JavaScript

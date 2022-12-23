@@ -20,9 +20,12 @@
         <li><a href="${ urlRoot }noticias/index">Noticias</a></li>
         <li><a href="${ urlRoot }acerca">Acerca</a></li>
         <li><a href="${ urlRoot }contacto">Contacto</a></li>
-        <li><a href="${ urlRoot }login">Ingresar</a></li>
-        <li><a href="${ urlRoot }logout">Salir</a></li>
+        <li><a href="${ urlRoot }formLogin">Ingresar</a></li>
+        <li><a href="#" onclick="document.getElementById('logout-form').submit();">Salir</a></li>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div>
+    <form id="logout-form" action="${ urlRoot }logout" method="post">
+    	<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }"/>
+	</form>
   </div>
 </nav>
