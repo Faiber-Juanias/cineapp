@@ -18,7 +18,9 @@
 
 	<authentication-manager>
 		<authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"/>
+			<jdbc-user-service data-source-ref="dataSource" 
+				users-by-username-query="select cuenta,pwd,activo from usuarios where cuenta = ?"
+				authorities-by-username-query="select cuenta,perfil from perfiles where cuenta = ?" />
 		</authentication-provider>
 	</authentication-manager>
 
