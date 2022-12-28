@@ -50,7 +50,6 @@ public class PeliculaController {
 				pelicula.setImagen(nombreImagen);
 			}
 		}
-		System.out.println(pelicula);
 		if (pelicula.getId() != 0)
 			attributes.addFlashAttribute("msg", "Registro Actualizado");
 		else
