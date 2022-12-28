@@ -24,6 +24,11 @@
 			<div class="form-group">
 				<h3 class="col-sm-offset-3">CineApp | Administración</h3>
 			</div>
+			<c:if test="${ param.error != null }">
+				<div class="form-group">
+					<div class="col-sm-offset-3 alert alert-danger" role="alert">Usuario y/o contraseña incorrectos</div>
+				</div>
+			</c:if>
 			<div class="form-group">
 			    <label for="username" class="col-sm-3 control-label">Usuario</label>
 			    <div class="col-sm-9">

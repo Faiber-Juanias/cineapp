@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,6 +82,15 @@ public class HomeController {
 		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 		logoutHandler.logout(request, null, null);
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/admin/index", method = RequestMethod.GET)
+	public String mostrarIndexLogin(Authentication authentication){
+		for (GrantedAuthority auth : authentication.getAuthorities()) {
+			System.out.println(auth.getAuthority());
+		}
+		
+		return "admin";
 	}
 	
 	@ModelAttribute

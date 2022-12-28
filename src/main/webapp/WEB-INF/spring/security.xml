@@ -11,9 +11,9 @@
 		<intercept-url pattern="/peliculas/*" access="hasAnyAuthority('EDITOR','GERENTE')" />
 		<intercept-url pattern="/horarios/*" access="hasAnyAuthority('EDITOR','GERENTE')" />
 		<intercept-url pattern="/noticias/*" access="hasAnyAuthority('EDITOR','GERENTE')" />
-		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE','GERENTE')" />
+		<intercept-url pattern="/banners/*" access="hasAnyAuthority('GERENTE')" />
 		<!-- Custom login form -->
-		<form-login login-page="/formLogin" />
+		<form-login login-page="/formLogin" default-target-url="/admin/index" />
 	</http>
 
 	<authentication-manager>
