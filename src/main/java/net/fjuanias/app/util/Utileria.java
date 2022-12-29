@@ -59,5 +59,12 @@ public class Utileria {
 		}
 		return builder.toString();
 	}
+	
+	public static List<String> getPerfiles() {
+		List<String> perfiles = new ArrayList<>();
+		perfiles.add("EDITOR");
+		perfiles.add("GERENTE");
+		return perfiles;
+	}
 
 }

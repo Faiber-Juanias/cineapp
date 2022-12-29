@@ -27,6 +27,7 @@
         </sec:authorize>
         <sec:authorize access="hasAnyAuthority('GERENTE')">
         	<li><a href="${ urlRoot }banners/index">Banners</a></li>
+        	<li><a href="${ urlRoot }usuarios/index">Usuarios</a></li>
         </sec:authorize>
         <sec:authorize access="isAnonymous()">
 	        <li><a href="${ urlRoot }acerca">Acerca</a></li>
